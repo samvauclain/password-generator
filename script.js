@@ -4,19 +4,25 @@ var randomPW = 0;
 
 function generatePassword() {
   var characters = window.prompt('Choose a length of at least 8 characters and no more than 128 characters');
+  console.log("characters: ", characters);
   
   validateInput(characters); 
 
-  var rand = "0"
-
-  for (let i = 0; i < characters - 2; i++) {
-    rand += "0";
+  rand = [];
+  
+  // loop through as many times as set by the prompt number and add a random number each time to the rand array, parse to sting so we can join the items after. 
+  for (let i = 0; i < characters; i++) {
+    rand[i] = Math.floor(Math.random() * 10);
+    rand[i] = rand[i].toString();
+    console.log(typeof rand[i]);
+    console.log(rand[i]);
   } 
 
-  rand = "1" + rand;
-  console.log(rand);
+  var pwNumbers = rand.join("");
 
-  randomPW = Math.floor(1 + Math.random() * (9 * rand));
+  console.log("rand: ", pwNumbers);
+
+  randomPW = Math.floor(Math.random() * rand);
   console.log(randomPW);
 
   return randomPW;
