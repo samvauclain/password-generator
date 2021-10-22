@@ -7,26 +7,12 @@ function generatePassword() {
   console.log("characters: ", characters);
   
   validateInput(characters); 
+  var pwNumbers = randNums(characters);
 
-  rand = [];
-  
-  // loop through as many times as set by the prompt number and add a random number each time to the rand array, parse to sting so we can join the items after. 
-  for (let i = 0; i < characters; i++) {
-    rand[i] = Math.floor(Math.random() * 10);
-    rand[i] = rand[i].toString();
-    console.log(typeof rand[i]);
-    console.log(rand[i]);
-  } 
-
-  var pwNumbers = rand.join("");
+  pwNumbers = rand.join("");
 
   console.log("rand: ", pwNumbers);
-
-  randomPW = Math.floor(Math.random() * rand);
-  console.log(randomPW);
-
-  return randomPW;
-
+  return pwNumbers;
 };
 
 function validateInput(characters) {
@@ -44,6 +30,18 @@ function validateInput(characters) {
     return generatePassword();
   }
   // return true;
+}
+
+function randNums(characters) {
+  rand = [];
+  
+  // loop through as many times as set by the prompt number and add a random number each time to the rand array, parse to sting so we can join the items after. 
+  for (let i = 0; i < characters; i++) {
+    rand[i] = Math.floor(Math.random() * 10);
+    rand[i] = rand[i].toString();
+    console.log(typeof rand[i]);
+    console.log(rand[i]);
+  } 
 }
 
 
