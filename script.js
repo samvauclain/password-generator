@@ -3,7 +3,6 @@ var uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 var lowercase = 'abcdefghijklmnopqrstuvwxyz';
 var numbers = '0123456789';
 var symbols = '_-+=`"!@#$%^&*[](){}';
-// var randomPW = 0;
 
 function generatePassword() {
   var characterQuantity = window.prompt('Choose a length of at least 8 characters and no more than 128 characters');
@@ -14,7 +13,7 @@ function generatePassword() {
 
   validateInput(characterQuantity); 
 
-  var randomPWString = Array.apply(null, Array(characterQuantity)).map(RandomGenerate).join('');
+  var randomPWString = Array.apply(null, Array(characterQuantity)).map(randomGenerate).join('');
 
   console.log("rand: ", randomPWString);
   return randomPWString;
@@ -34,26 +33,38 @@ function validateInput(characterQuantity) {
     window.alert("That number isn't within the specified range. Please try again.");
     return generatePassword();
   }
-  // return true;
+
 }
 
-function RandomGenerate() {
-    var random = uppercase + lowercase + numbers + symbols;
-    return random[Math.floor(Math.random() * random.length)];
-}
+function randomGenerate() {
+ 
+    var randomPassword = "";
+    
+    // var lowercaseYes = window.prompt('Do you want lowercase letters?');
+    // var uppercaseYes = window.prompt('Do you want uppercase letters?');
+    // var numbersYes = window.prompt('Do you want numbers?');
+    // var symbolsYes = window.prompt('Do you want numbers?');
 
+    // if (lowercaseYes === "yes") {
+    //   randomPassword += lowercase;
+    //   console.log(randomPassword);
+    // }
+    // if (uppercaseYes === "yes") {
+    //   randomPassword += uppercase;
+    //   console.log(randomPassword);
+    // }
+    // if (numbersYes === "yes") {
+    //   randomPassword += numbers;
+    //   console.log(randomPassword);
+    // }
+    // if (symbolsYes === "yes") {
+    //   randomPassword += symbols;
+    //   console.log(randomPassword);
+    // }
 
-// function randNums(characters) {
-//   rand = [];
-  
-  // loop through as many times as set by the prompt number and add a random number each time to the rand array, parse to sting so we can join the items after. 
-  // for (let i = 0; i < characters; i++) {
-  //   rand[i] = Math.floor(Math.random() * 10);
-  //   rand[i] = rand[i].toString();
-    // console.log(typeof rand[i]);
-    // console.log(rand[i]);
-//   } 
-// }
+    randomPassword = uppercase + lowercase + numbers + symbols;
+    return randomPassword[Math.floor(Math.random() * randomPassword.length)];
+};
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
@@ -64,7 +75,7 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
   passwordText.value = password;
 
-}
+};
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
