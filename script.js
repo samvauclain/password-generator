@@ -19,9 +19,6 @@ function generatePassword() {
 
   // Send it to validation function
   validateInput(characterQuantity); 
-
-  randomGenerate(characterQuantity);
-
   return finalPassword;
 };
 
@@ -35,18 +32,21 @@ function validateInput(characterQuantity) {
     window.alert("That character isn't a number. Please enter a number.");
     return generatePassword();
   }
-  else if (characterQuantity < 8 || characterQuantity > 129) {
+  else if (characterQuantity < 8 || characterQuantity > 128) {
     window.alert("That number isn't within the specified range. Please try again.");
     return generatePassword();
   }
+
+  randomGenerate(characterQuantity);
+  return finalPassword;
 };
 
 function randomGenerate(characterQuantity) {
   console.log("how broken is characterQuantity?", characterQuantity);
-  var lowercaseYes = window.confirm('Do you want lowercase letters?');
-  var uppercaseYes = window.confirm('Do you want uppercase letters?');
-  var numbersYes = window.confirm('Do you want numbers?');
-  var symbolsYes = window.confirm('Do you want numbers?');
+  var lowercaseYes = window.confirm('Do you want to include lowercase letters?');
+  var uppercaseYes = window.confirm('Do you want to include uppercase letters?');
+  var numbersYes = window.confirm('Do you want to include numbers?');
+  var symbolsYes = window.confirm('Do you want to include symbols?');
 
   if (!lowercaseYes && !uppercaseYes && !numbersYes && symbolsYes) {
     alert("Please pick one or more character option");
