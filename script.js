@@ -48,13 +48,13 @@ function randomGenerate(characterQuantity) {
   var numbersYes = window.confirm('Do you want to include numbers?');
   var symbolsYes = window.confirm('Do you want to include symbols?');
 
-  if (!lowercaseYes && !uppercaseYes && !numbersYes && symbolsYes) {
+  if (!lowercaseYes && !uppercaseYes && !numbersYes && !symbolsYes) {
     alert("Please pick one or more character option");
+    randomGenerate();
   }
   else {
     if (lowercaseYes) {
       randomPassword += lowercase;
-      // console.log('Random PW:', randomPassword);
     }
     if (uppercaseYes) {
       randomPassword += uppercase;
@@ -66,12 +66,11 @@ function randomGenerate(characterQuantity) {
       randomPassword += symbols;
     } 
     console.log(characterQuantity);
-    // randomPassword = randomPassword[Math.floor(Math.random() * characterQuantity)];
 
     for (var i = 0; i < characterQuantity; i++) {
       finalPassword = finalPassword + randomPassword[Math.floor(Math.random() * randomPassword.length)];
     }
-    console.log("final PW:", randomPassword);
+    console.log("final PW:", finalPassword);
   }
   return finalPassword;
 };
