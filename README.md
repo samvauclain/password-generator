@@ -2,7 +2,7 @@
 
 ## GIVEN I need a new, secure password
 
-[Project URL:] (https://samvauclain.github.io/mod-1-challenge/)
+Project URL: https://samvauclain.github.io/password-generator/
 
 This repository contains the code for a password generator. The criteria is listed below:
 
