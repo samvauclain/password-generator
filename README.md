@@ -2,6 +2,10 @@
 
 ## GIVEN I need a new, secure password
 
+[Project URL:] (https://samvauclain.github.io/mod-1-challenge/)
+
+This repository contains the code for a password generator. The criteria is listed below:
+
 WHEN I click the button to generate a password
 * THEN I am presented with a series of prompts for password criteria
 
@@ -22,3 +26,7 @@ WHEN all prompts are answered
 
 WHEN the password is generated
 * THEN the password is either displayed in an alert or written to the page
+
+Screenshot of Project:
+
+<img src="./screenshot.png"/>

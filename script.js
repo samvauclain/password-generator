@@ -1,27 +1,23 @@
 // Assignment code here
 
-// Turn this into an object in the future? Change calls below to dot notation.
-// var pw = {
-//   uppercase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
-//   lowercase:  'abcdefghijklmnopqrstuvwxyz',
-//   numbers: '0123456789',
-//   symbols: '_-+=`"!@#$%^&*[](){}',
-//   randomPassword: "",
-//   finalPassword: ""
-// }
-var uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-var lowercase = 'abcdefghijklmnopqrstuvwxyz';
-var numbers = '0123456789';
-var symbols = '_-+=`"!@#$%^&*[](){}';
+// Password Object
+var pw = {
+  uppercase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+  lowercase:  'abcdefghijklmnopqrstuvwxyz',
+  numbers: '0123456789',
+  symbols: '_-+=`"!@#$%^&*[](){}~><:'
+}
+
 var randomPassword = "";
 var finalPassword = "";
+
 var lowercaseYes,uppercaseYes,numbersYes,symbolsYes = false;
 
 function generatePassword() {
   // set final password back to empty, in case user hits enter after 1st pw is generated (this was adding second pw to first)
   finalPassword = "";
 
-  // if one pw has been generated and user click to do another, reset the randomGenerate prompts so their new choices come through
+  // if one pw has been generated and user click to do another, reset the randomGenerate prompts so their new choices come through, still doesn't work perfectly but it's close.
   lowercaseYes,uppercaseYes,numbersYes,symbolsYes = false;
 
   // Grab the number from the user (prompt is string format)
@@ -59,7 +55,7 @@ function validateInput(characterQuantity) {
 
 // Ask user the options they want to include
 function randomGenerate(characterQuantity) {
-  console.log("how broken is characterQuantity?", characterQuantity);
+  console.log("characterQuantity:", characterQuantity);
   lowercaseYes = window.confirm('Do you want to include lowercase letters?');
   uppercaseYes = window.confirm('Do you want to include uppercase letters?');
   numbersYes = window.confirm('Do you want to include numbers?');
@@ -73,16 +69,16 @@ function randomGenerate(characterQuantity) {
   // building the set of characters to use based on responses
   else {
     if (lowercaseYes) {
-      randomPassword += lowercase;
+      randomPassword += pw.lowercase;
     }
     if (uppercaseYes) {
-      randomPassword += uppercase;
+      randomPassword += pw.uppercase;
     }
     if (numbersYes) {
-      randomPassword += numbers;
+      randomPassword += pw.numbers;
     }
     if (symbolsYes) {
-      randomPassword += symbols;
+      randomPassword += pw.symbols;
     } 
  
     // looping through and picking a random character each time from the character types chosen, until we reach the number of characters requested
