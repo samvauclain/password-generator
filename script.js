@@ -1,29 +1,44 @@
 // Assignment code here
 
-// Turn this into an object?
+// Turn this into an object in the future? Change calls below to dot notation.
+// var pw = {
+//   uppercase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+//   lowercase:  'abcdefghijklmnopqrstuvwxyz',
+//   numbers: '0123456789',
+//   symbols: '_-+=`"!@#$%^&*[](){}',
+//   randomPassword: "",
+//   finalPassword: ""
+// }
 var uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 var lowercase = 'abcdefghijklmnopqrstuvwxyz';
 var numbers = '0123456789';
 var symbols = '_-+=`"!@#$%^&*[](){}';
 var randomPassword = "";
 var finalPassword = "";
+var lowercaseYes,uppercaseYes,numbersYes,symbolsYes = false;
 
 function generatePassword() {
   // set final password back to empty, in case user hits enter after 1st pw is generated (this was adding second pw to first)
   finalPassword = "";
+
+  // if one pw has been generated and user click to do another, reset the randomGenerate prompts so their new choices come through
+  lowercaseYes,uppercaseYes,numbersYes,symbolsYes = false;
+
+  // Grab the number from the user (prompt is string format)
   var characterQuantity = window.prompt('Choose a length of at least 8 characters and no more than 128 characters');
-  // console.log("characters: ", characterQuantity);
-  
+
+  //convert string to integer
   var characterQuantity = parseInt(characterQuantity);
-  // console.log("It converts now: ", typeof(characterQuantity));
 
   // Send it to validation function
   validateInput(characterQuantity); 
+
+  // We have our final PW!
   return finalPassword;
 };
 
+// validate prompt text, run generate PW again if not valid, blank or cancel (null), not a number NaN, Out of range numbers
 function validateInput(characterQuantity) {
-  // validate prompt text
   if (characterQuantity === "" || characterQuantity === null) {
     window.alert("Hmmmm. Looks like nothing was entered, please try again.");
     return generatePassword();
@@ -37,21 +52,25 @@ function validateInput(characterQuantity) {
     return generatePassword();
   }
 
+  // Send to randomGenerate to build with different options picked by the user
   randomGenerate(characterQuantity);
   return finalPassword;
 };
 
+// Ask user the options they want to include
 function randomGenerate(characterQuantity) {
   console.log("how broken is characterQuantity?", characterQuantity);
-  var lowercaseYes = window.confirm('Do you want to include lowercase letters?');
-  var uppercaseYes = window.confirm('Do you want to include uppercase letters?');
-  var numbersYes = window.confirm('Do you want to include numbers?');
-  var symbolsYes = window.confirm('Do you want to include symbols?');
+  lowercaseYes = window.confirm('Do you want to include lowercase letters?');
+  uppercaseYes = window.confirm('Do you want to include uppercase letters?');
+  numbersYes = window.confirm('Do you want to include numbers?');
+  symbolsYes = window.confirm('Do you want to include symbols?');
 
+  // If none are picked, alert, and then run function again to ask again
   if (!lowercaseYes && !uppercaseYes && !numbersYes && !symbolsYes) {
     alert("Please pick one or more character option");
     randomGenerate();
   }
+  // building the set of characters to use based on responses
   else {
     if (lowercaseYes) {
       randomPassword += lowercase;
@@ -65,8 +84,8 @@ function randomGenerate(characterQuantity) {
     if (symbolsYes) {
       randomPassword += symbols;
     } 
-    console.log(characterQuantity);
-
+ 
+    // looping through and picking a random character each time from the character types chosen, until we reach the number of characters requested
     for (var i = 0; i < characterQuantity; i++) {
       finalPassword = finalPassword + randomPassword[Math.floor(Math.random() * randomPassword.length)];
     }
