@@ -1,4 +1,4 @@
-# Password Generator Starter Code
+# Password Generator
 
 ## GIVEN I need a new, secure password
 
